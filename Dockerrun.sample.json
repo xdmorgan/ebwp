@@ -1,0 +1,35 @@
+{
+  "AWSEBDockerrunVersion": 2,
+  "containerDefinitions": [
+    {
+      "name": "wordpress",
+      "image": "wordpress:latest",
+      "essential": true,
+      "memory": 128,
+      "portMappings": [
+        {
+          "hostPort": 80,
+          "containerPort": 80
+        }
+      ],
+      "environment": [
+        {
+          "name": "WORDPRESS_DB_HOST",
+          "value": "[RDS endpoint url, same security group]"
+        },
+        {
+          "name": "WORDPRESS_DB_NAME",
+          "value": "[RDS DB name]"
+        },
+        {
+          "name": "WORDPRESS_DB_USER",
+          "value": "[RDS DB user]"
+        },
+        {
+          "name": "WORDPRESS_DB_PASSWORD",
+          "value": "[RDS DB user's password]"
+        }
+      ]
+    }
+  ]
+}
